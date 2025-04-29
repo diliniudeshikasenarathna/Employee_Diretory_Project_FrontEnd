@@ -1,19 +1,37 @@
-<table class="table">
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/src/app/assests/img/employee.svg" alt="" width="72" height="57">
+        <h1 class="h2">All Empolyees Details</h1>
+<table class="table mt-5">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Department</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col">Action</th>
+        
+        
       </tr>
     </thead>
-    <tbody *ng>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td></td>
+    <tbody *ngFor ="let employee of employeeList">
+        
+      <tr >
+        <th >{{employee.id}}</th>
+        <td>{{employee.name}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.department}}</td>
+        <td>{{employee.createdAt}}</td>
+        <td>{{employee.updatedAt}}</td>
+        <td>
+        <button class="btn btn-warning me-2" (click)="onUpdate(employee)">Edit</button>
+         <button class="btn btn-danger" (click)="onDelete(employee.id)">Delete</button>
+        </td>
       </tr>
   
     </tbody>
   </table>
+</div></div>

@@ -1,10 +1,15 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Employee } from '../../model/Employee';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-employee-list',
+  standalone: true,
   imports: [CommonModule,FormsModule],
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css'
@@ -12,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 export class EmployeeListComponent {
 
   employeeList:any []=[];
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient,private router: Router){
 
     this.getAllEmployee();
   }
@@ -21,6 +26,23 @@ export class EmployeeListComponent {
       console.log(data);
       this.employeeList=data;
     })
+  }
+  onUpdate(id:number){
+    this.router.navigate(["edit-employee", id]);
+
+
+  }
+  onDelete(id: number) {
+    this.http.delete(`http://localhost:8080/employee/delete/${id}`).subscribe({
+      next: () => {
+        alert("Employee deleted successfully");
+      },
+      error: err => {
+        alert("Error deleting employee:");
+      }
+    });
+    this.getAllEmployee();
+
   }
 
 }
