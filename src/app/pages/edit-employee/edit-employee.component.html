@@ -8,11 +8,11 @@
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3">Employee Details</h4>
           
-          <!-- <form (ngSubmit)="OnSubmit()"class="needs-validation" novalidate>
+           <form (ngSubmit)="OnSubmit()"class="needs-validation" novalidate>
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="firstName" class="form-label">Name</label>
-                <input [(ngModel)]="employee.name" type="text" class="form-control" id="firstName" name="name" placeholder="" value="" required>
+                <input  type="text" class="form-control" id="firstName" name="name" placeholder="" value={{employeeDetail.name}}  required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
@@ -21,7 +21,7 @@
     
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-                <input  [(ngModel)]="employee.email" type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="" value={{employeeDetail.email}}>
                 <div class="invalid-feedback">
                   Please enter a valid email address.
                 </div>
@@ -29,8 +29,8 @@
   
               <div class="col-12">
                 <label for="department" class="form-label">Department</label>
-                <select  [(ngModel)]="employee.department"  class="form-select" name="department" id="department" required>
-                  <option value="">Choose...</option>
+                <select   class="form-select" name="department" id="department" required>
+                  <option value="">{{employeeDetail.department}} </option>
                   <option value="IT">IT</option>
                   <option value="HR">HR</option>
                   <option value="Operations">Operations</option>
@@ -46,8 +46,8 @@
   
             <hr class="my-4">
   
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Add Employee</button>
-          </form> -->
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Update Employee</button>
+          </form> 
         </div>
       
     </main>
