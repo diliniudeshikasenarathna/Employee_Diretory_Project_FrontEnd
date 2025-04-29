@@ -1,0 +1,19 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+
+@Injectable({
+    providedIn:"root"
+})
+export class EmployeeService{
+    constructor(private http:HttpClient){
+        this.getAllEmployees();
+    }
+
+    getAllEmployees(){
+        this.http.get("http://localhost:8080/employee/get-all").subscribe(data=>{
+            console.log(data);
+        })
+    }
+
+   
+}
